@@ -106,13 +106,13 @@ For more information about the COI scores, see here - [COI 3.0 Technical Documen
 ```r_HE_stt``` - Overall Health and Environment score
 
 ### Social and Economic
-```r_SE_EO_stt ``` -  Employment \
-```r_SE_ER_stt ``` -  Economic Resources \
-```r_SE_EI_stt ``` -  Concentrated Socioeconomic Inequity \
-```r_SE_HQ_stt ``` -  Housing Resources \
-```r_SE_SR_stt ``` -  Social Resources \
-```r_SE_WL_stt ``` -  Wealth \
-```r_SE_stt ``` -  Overall Social and Economic score
+```r_SE_EO_stt``` -  Employment \
+```r_SE_ER_stt``` -  Economic Resources \
+```r_SE_EI_stt``` -  Concentrated Socioeconomic Inequity \
+```r_SE_HQ_stt``` -  Housing Resources \
+```r_SE_SR_stt``` -  Social Resources \
+```r_SE_WL_stt``` -  Wealth \
+```r_SE_stt``` -  Overall Social and Economic score
 
 ### Overall
 ```r_COI_stt``` - Overall COI score
