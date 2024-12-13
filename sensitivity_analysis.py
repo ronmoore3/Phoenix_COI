@@ -38,7 +38,7 @@ if __name__ == "__main__":
     data_path = 'data/dataset_24h_filtered.parquet.gzip'
     df = pd.read_parquet(data_path)
     for train_data in ['EG', 'SR']:
-        results_path = f"{os.getcwd()}/results/{train_data}/XGB"
+        results_path = f"{os.getcwd()}/results/{train_data}"
         print(f"Performing analysis...")
         for validation in ['internal', 'external']:
             print(f"Performing analysis for {results_path}/{validation}...")
