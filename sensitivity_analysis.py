@@ -35,7 +35,7 @@ def sensitivity_analysis(results, df, save_path):
 
 
 if __name__ == "__main__":
-    data_path = '/opt/scratchspace/remoor6/pediatric_sepsis/coi/dataset_24h_filtered.parquet.gzip'
+    data_path = 'data/dataset_24h_filtered.parquet.gzip'
     df = pd.read_parquet(data_path)
     for train_data in ['EG', 'SR']:
         results_path = f"{os.getcwd()}/results/{train_data}/XGB"
