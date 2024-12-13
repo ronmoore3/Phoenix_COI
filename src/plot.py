@@ -229,9 +229,9 @@ def calibration_plot(results, save_path, n_bins=10):
     plt.close()
 
 
-def shap_plot(shap_vals, save_path, plot='bar'):
+def shap_plot(shap_vals, save_path):
     '''
-    Create SHAP summary plots
+    Create SHAP beeswarm plots
     '''
     os.makedirs(save_path, exist_ok=True)
     for model in sorted(shap_vals.keys()):
