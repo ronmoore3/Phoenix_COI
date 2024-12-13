@@ -10,7 +10,7 @@ For more information on how the Phoenix cohort was developed, please visit https
 To train the model, run the script `main.py` using the following command:
 
 ```bash
-python main.py --train_data --features --model --trials
+python main.py --train_data --features --trials
 ```
 ### Options
 **`train_data (str, default=EG)`** - Site to use for training. \
@@ -21,10 +21,6 @@ python main.py --train_data --features --model --trials
 **emr** - Use laboratory results and vital signs. \
 **coi** - Use the Child Opportunity Index (COI) indicators only. \
 **both** - Use the laboratory results, vital signs, and COI indicators.
-
-**`model (str, default=XGB)`** - Model to use for training. \
-**LR** - Logistic Regression. \
-**XGB** - eXtreme Gradient Boosting.
 
 **`trials (int, default=10)`** - Number of trials to use for experiment repitition.
 
