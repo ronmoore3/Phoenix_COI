@@ -58,10 +58,10 @@ def shap_plots(shap_vals, results, df, save_path, plot_type):
 
 
 if __name__ == '__main__':
-    data_path = '/opt/scratchspace/remoor6/pediatric_sepsis/coi/dataset_24h_filtered.parquet.gzip'
+    data_path = 'data/dataset_24h_filtered.parquet.gzip'
     df = pd.read_parquet(data_path)
     for train_data in ['EG', 'SR']:
-        results_path = f"{os.getcwd()}/results/{train_data}/XGB"
+        results_path = f"{os.getcwd()}/results/{train_data}"
         print(f"Creating plots for {train_data}...")
         results = {}
         for validation in ['internal', 'external']:
@@ -74,6 +74,7 @@ if __name__ == '__main__':
 
             shap_vals = {}
             shap_data_path = f'{results_path}/shap_data'
+            shap_plots_path = f'{plots_path}/shap/{validation}'
             for pkl_file in os.scandir(f'{shap_data_path}/{validation}'):
                 if pkl_file.is_file():
                     model_name = pkl_file.name.split('.pkl')[0]
@@ -82,8 +83,4 @@ if __name__ == '__main__':
 
             # plot model and shap results
             model_plots(results, df, model_plots_path)
-
-            # for plot_type in ['bar', 'beeswarm', 'waterfall']:
-            for plot_type in ['beeswarm']:
-                shap_plots_path = f'{plots_path}/shap/{plot_type}/{validation}'
-                shap_plots(shap_vals, results, df, shap_plots_path, plot_type=plot_type)
+            shap_plots(shap_vals, results, df, shap_plots_path)
