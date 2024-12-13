@@ -88,7 +88,6 @@ def prc_plot(results, save_path):
     ax.set_ylabel('Precision', fontsize=48)
     ax.legend(loc='upper right', fontsize=36)
     plt.tight_layout()
-    fig.savefig(f"{save_path}/prc.pdf", dpi=300)
     fig.savefig(f"{save_path}/prc.png", dpi=300)
     plt.close()
 
@@ -171,7 +170,6 @@ def roc_plot(results, save_path):
     ax.set_ylabel('True Positive Rate', fontsize=48)
     ax.legend(loc='lower right', fontsize=36)
     plt.tight_layout()
-    fig.savefig(f"{save_path}/roc.pdf", dpi=300)
     fig.savefig(f"{save_path}/roc.png", dpi=300)
     plt.close()
 
@@ -227,7 +225,6 @@ def calibration_plot(results, save_path, n_bins=10):
     ax.set_ylabel('Fraction of Positives', fontsize=48)
     ax.legend(loc='upper left', fontsize=36)
     plt.tight_layout()
-    fig.savefig(f"{save_path}/calibration.pdf", dpi=300)
     fig.savefig(f"{save_path}/calibration.png", dpi=300)
     plt.close()
 
@@ -239,36 +236,20 @@ def shap_plot(shap_vals, save_path, plot='bar'):
     os.makedirs(save_path, exist_ok=True)
     for model in sorted(shap_vals.keys()):
         model_shap_vals = shap_vals[model][:,:,1] if 'RF' in model else shap_vals[model]
-        if plot == 'bar':
-            shap.plots.bar(model_shap_vals,
-                           max_display=20,
-                           show=False
-                           )
-        elif plot == 'beeswarm':
-            shap.plots.beeswarm(model_shap_vals,
-                                max_display=20,
-                                show=False
-                                )
-        elif plot == 'waterfall':
-            shap.plots.waterfall(model_shap_vals[0],
-                                 max_display=20,
-                                 show=False
-                                 )
-            
+        shap.plots.beeswarm(model_shap_vals,
+                            max_display=20,
+                            show=False
+                            )
         # Modifying main plot parameters
         fig, ax = plt.gcf(), plt.gca()
         ax.tick_params(labelsize=24)
         ax.set_xlabel("SHAP value (impact on model output)", fontsize=30)
-
-        # Get colorbar
-        # Modifying color bar parameters if beeswarm
-        if plot == 'beeswarm':
-            cb_ax = fig.axes[1] 
-            cb_ax.tick_params(labelsize=24)
-            cb_ax.set_ylabel('Feature value', fontsize=30)
+        # Get colorbar and modify parameters
+        cb_ax = fig.axes[1] 
+        cb_ax.tick_params(labelsize=24)
+        cb_ax.set_ylabel('Feature value', fontsize=30)
         fig.set_size_inches(15,10)
         plt.tight_layout()
-        plt.savefig(f"{save_path}/{model}.pdf", dpi=300)
         plt.savefig(f"{save_path}/{model}.png", dpi=300)
         plt.clf()
     plt.close()
