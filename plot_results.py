@@ -34,7 +34,7 @@ def model_plots(results, df, save_path):
             roc_plot(cohort_results, save_path)
 
 
-def shap_plots(shap_vals, results, df, save_path, plot_type):
+def shap_plots(shap_vals, results, df, save_path):
     # for cohort in ['suspected_infection', 'sepsis', 'septic_shock']:
     for cohort in ['suspected_infection']:
         if cohort == 'suspected_infection':
@@ -54,7 +54,7 @@ def shap_plots(shap_vals, results, df, save_path, plot_type):
                 cohort_ind = model_results.loc[cohort_cond].index.values
                 cohort_shap_vals[model_name] = model_shap_vals[cohort_ind]
         # plot results
-        shap_plot(cohort_shap_vals, save_path, plot_type)
+        shap_plot(cohort_shap_vals, save_path)
 
 
 if __name__ == '__main__':
